@@ -1,0 +1,7 @@
+@import "tailwindcss";
+:root{
+  font-family: "cinzel";
+}
+body{
+  background-image: url(../imgs/backhground.png);
+}
