@@ -7,9 +7,10 @@
   <title>ETERNALS SUMMONERS | HOME</title>
   <link href="/src/output.css" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Maname&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Maname&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
 
 <body>
@@ -27,7 +28,7 @@
         </ul>
       </nav>
     </div>
-    <div class="fixed bottom-0 w-full bg-black z-100">
+    <div class="fixed bottom-0 w-full bg-black z-100 md:hidden lg:hidden xl:hidden 2xl:hidden">
       <nav>
         <ul class="flex flex-row items-center justify-evenly">
           <li><a href="market.html"><img src="imgs/market mobile icon.png" alt="Market icon"></a></li>
@@ -52,7 +53,7 @@
           <p>Play Demo</p>
         </div>
       </div>
-      <div class="flex flex-col justify-center items-center">
+      <div class="flex flex-col justify-center items-center md:hidden lg:hidden xl:hidden 2xl:hidden">
         <img class="w-35" src="imgs/logo.png" alt="ETERNALS SUMMONERS logo">
         <p class="text-white pt-3 pb-7 text-xl">FICTIONAL CARDS GAME</p>
         <img src="imgs/hero img mobile.png" alt="Solar Titan">
@@ -60,7 +61,8 @@
           <img class="scale-80" src="imgs/play-button.png" alt="play button">
           <p class="text-[#937D00] text-2xl ">Play Demo</p>
         </div>
-        <a href="deck.html"> <img class="absolute top-0 right-0" src="imgs/my deck mobile onpage icon.png" alt="My deck icon"></a>
+        <a href="deck.html" > <img class="absolute top-0 right-0 md:hidden lg:hidden xl:hidden 2xl:hidden hover:scale-50" src="imgs/my deck mobile onpage icon.png"
+            alt="My deck icon"></a>
       </div>
     </section>
     <section class="flex overflow-hidden -mt-2">
@@ -71,18 +73,20 @@
     <section class="flex flex-col items-center">
       <h1 class="text-3xl text-[#AB9100] py-5">Discover Our World</h1>
       <div>
-        <div class=" w-86 h-114 bg-black flex justify-center items-center relative hidden lg:flex ">
+        <div class=" w-86 h-114 bg-black justify-center items-center relative hidden lg:flex ">
           <div class=" border-3 border-[#9B8400] w-79 h-109 flex flex-col items-center pt-2">
             <div class="border-2 border-[#9B8400] w-74 h-69 ">
               <img class="w-73 h-68" src="imgs/legendary card bg.png" alt="golden glow">
               <div class="w-8 h-8 border border-[#9B8400] bg-black relative bottom-68.5 right-0.5 rotate-45">
-                <p class="font-[Maname] text-[#A38B00]  text-3xl absolute -top-3 -left-1 right-3 bottom-4 -rotate-45">8</p>
+                <p class="font-[Maname] text-[#A38B00]  text-3xl absolute -top-3 -left-1 right-3 bottom-4 -rotate-45">8
+                </p>
               </div>
             </div>
             <div class="flex pt-2 relative">
               <div class="w-2 h-2 border border-[#BEA301] bg-black rotate-45 absolute top-4.5 -left-4 z-40 "></div>
               <div class="w-4 h-4 border-2 border-[#BEA301] bg-black rotate-45 absolute top-3.5 -left-2.5"></div>
-              <p class="border border-[#9B8400] border-solid text-[#9B8400] text-sm px-3 py-1 rounded-2xl">Voidblade Champion</p>
+              <p class="border border-[#9B8400] border-solid text-[#9B8400] text-sm px-3 py-1 rounded-2xl">Voidblade
+                Champion</p>
               <div class="w-4 h-4 border-2 border-[#BEA301] bg-black rotate-45 absolute -right-2.5 top-3.5"></div>
               <div class="w-2 h-2 border border-[#BEA301] bg-black rotate-45 absolute top-4.5 -right-4 z-40"></div>
             </div>
@@ -119,13 +123,15 @@
             <div class="border-2 border-[#9B8400] w-74 h-69 ">
               <img class="w-73 h-68" src="imgs/legendary card bg.png" alt="golden glow">
               <div class="w-8 h-8 border border-[#9B8400] bg-black relative bottom-68.5 right-0.5 rotate-45">
-                <p class="font-[Maname] text-[#A38B00]  text-3xl absolute -top-3 -left-1 right-3 bottom-4 -rotate-45">9</p>
+                <p class="font-[Maname] text-[#A38B00]  text-3xl absolute -top-3 -left-1 right-3 bottom-4 -rotate-45">9
+                </p>
               </div>
             </div>
             <div class="flex pt-2 relative">
               <div class="w-2 h-2 border border-[#BEA301] bg-black rotate-45 absolute top-5 -left-4 z-40 "></div>
               <div class="w-4 h-4 border-2 border-[#BEA301] bg-black rotate-45 absolute top-4 -left-2.5"></div>
-              <p class="border border-[#9B8400] border-solid text-[#9B8400] text-base px-3 py-1 rounded-2xl">Solar Titan</p>
+              <p class="border border-[#9B8400] border-solid text-[#9B8400] text-base px-3 py-1 rounded-2xl">Solar Titan
+              </p>
               <div class="w-4 h-4 border-2 border-[#BEA301] bg-black rotate-45 absolute -right-2.5 top-4"></div>
               <div class="w-2 h-2 border border-[#BEA301] bg-black rotate-45 absolute top-5 -right-4 z-40"></div>
             </div>
@@ -145,7 +151,8 @@
                   <img class="scale-60 " src="imgs/ATK.png" alt="two swords">
                 </div>
               </div>
-              <p class="text-xs text-[#BEA301] pt-5 scale-87">"<span class="text-white">Solar-born divine executioner</span>"</p>
+              <p class="text-xs text-[#BEA301] pt-5 scale-87">"<span class="text-white">Solar-born divine
+                  executioner</span>"</p>
               <div class="flex flex-col absolute -top-6.5 -right-12 items-center">
                 <p class="text-[#BEA301]">2000 Pt</p>
                 <div class="border border-[#BEA301] rounded-full w-14 h-14 -mt-1">
@@ -157,18 +164,20 @@
             <hr class="absolute border border-[#9B8400] w-74 border-solid bottom-39.5">
           </div>
         </div>
-       <div class=" w-86 h-114 bg-black hidden lg:flex justify-center items-center relative ">
+        <div class=" w-86 h-114 bg-black hidden lg:flex justify-center items-center relative ">
           <div class=" border-3 border-[#9B8400] w-79 h-109 flex flex-col items-center pt-2">
             <div class="border-2 border-[#9B8400] w-74 h-69 ">
               <img class="w-73 h-68" src="imgs/legendary card bg.png" alt="golden glow">
               <div class="w-8 h-8 border border-[#9B8400] bg-black relative bottom-68.5 right-0.5 rotate-45">
-                <p class="font-[Maname] text-[#A38B00]  text-3xl absolute -top-3 -left-1 right-3 bottom-4 -rotate-45">7</p>
+                <p class="font-[Maname] text-[#A38B00]  text-3xl absolute -top-3 -left-1 right-3 bottom-4 -rotate-45">7
+                </p>
               </div>
             </div>
             <div class=" pt-2 relative flex ">
               <div class="w-2 h-2 border border-[#BEA301] bg-black rotate-45 absolute top-5 -left-4 z-40 "></div>
               <div class="w-4 h-4 border-2 border-[#BEA301] bg-black rotate-45 absolute top-4 -left-2.5"></div>
-              <p class="border border-[#9B8400] border-solid text-[#9B8400] text-base px-3 py-1 rounded-2xl">Infernal Herald</p>
+              <p class="border border-[#9B8400] border-solid text-[#9B8400] text-base px-3 py-1 rounded-2xl">Infernal
+                Herald</p>
               <div class="w-4 h-4 border-2 border-[#BEA301] bg-black rotate-45 absolute -right-2.5 top-4"></div>
               <div class="w-2 h-2 border border-[#BEA301] bg-black rotate-45 absolute top-5 -right-4 z-40"></div>
             </div>
@@ -188,7 +197,8 @@
                   <img class="scale-60 " src="imgs/ATK.png" alt="two swords">
                 </div>
               </div>
-              <p class="text-xs text-[#BEA301] pt-5 scale-87">"<span class="text-white">Comet-born firebringer</span>"</p>
+              <p class="text-xs text-[#BEA301] pt-5 scale-87">"<span class="text-white">Comet-born firebringer</span>"
+              </p>
               <div class="flex flex-col absolute -top-7 -right-17 items-center">
                 <p class="text-[#BEA301]">1200 Pt</p>
                 <div class="border border-[#BEA301] rounded-full w-14 h-14 -mt-1">
@@ -200,35 +210,36 @@
             <hr class="absolute border border-[#9B8400] w-74 border-solid bottom-39.5">
           </div>
         </div>
-      <div>
-        <button>Learn Now</button>
-        <button>Go To Market</button>
+      </div>
+      <div class="flex justify-center gap-5 pt-3">
+        <button class="px-8 py-3 text-[#FFD900] border border-[#9B8400] text-xl rounded-full hover:text-white">Learn Now</button>
+        <button class=" px-7  text-[#FFD900] border border-[#9B8400] text-xl rounded-full ">Go To Market</button>
       </div>
     </section>
-    <section>
-      <h1>Built Your Own WORLD</h1>
-      <p>Collect and trade cards, and build a deck you can truly call your own</p>
-      <button>Start Your Collection</button>
+    <section class="flex flex-col items-center pt-3 gap-3">
+      <h1 class="text-3xl text-[#9B8400] pt-4">Built Your Own WORLD</h1>
+      <p class="text-white text-2xl pl-2">Collect and trade cards, and build a deck you can truly call your own</p>
+      <button class="border-2 border-[#9B8400] text-[#FFD900] text-3xl py-4 px-3 rounded-full mt-3">Start Your Collection</button>
     </section>
   </main>
-  <footer>
-    <hr>
-    <img src="imgs/logo.png" alt="ETERNALS SUMMONERS logo">
-    <div>
-      <p>AVAILABLE ON</p>
-      <img src="imgs/windows logo.png" alt="Windows logo">
-      <img src="imgs/MAC OS logo.png" alt="Apple logo">
-      <img src="imgs/app store logo.png" alt="app store icon">
+  <footer class="flex flex-col items-center pt-7 gap-3">
+    <hr class="w-101 border border-[#9B8400] border-solid mb-3">
+    <img class="w-37 h-22" src="imgs/logo.png" alt="ETERNALS SUMMONERS logo">
+    <div class="flex gap-2">
+      <p class="text-[#BEA301] text-base">AVAILABLE ON</p>
+      <img class="w-6 h-6" src="imgs/windows logo.png" alt="Windows logo">
+      <img class="w-6.25 h-6.25" src="imgs/MAC OS logo.png" alt="Apple logo">
+      <img class="w-19.5 h-6.75" src="imgs/app store logo.png" alt="app store icon">
       <img src="imgs/google play logo.png" alt="google play icon">
     </div>
-    <div>
-      <p>Follow Us In</p>
-      <img src="imgs/Facebook logo.png" alt="Facebook logo">
-      <img src="imgs/Instagram logo.png" alt="Instagram logo">
-      <img src="imgs/Twitter X logo.png" alt="Twitter X logo">
+    <div class="flex gap-2">
+      <p class="text-[#BEA301] text-base">Follow Us In</p>
+      <img class="w-6 h-6" src="imgs/Facebook logo.png" alt="Facebook logo">
+      <img class="w-6 h-6" src="imgs/Instagram logo.png" alt="Instagram logo">
+      <img class="w-6 h-6" src="imgs/Twitter X logo.png" alt="Twitter X logo">
     </div>
-    <p>All rights reserved@genZdevs.co</p>
-  </footer>
+    <p class="text-xs text-white mt-5 mb-23">All rights reserved@genZdevs.co</p>
+  </footer class>
 </body>
 
 </html>
