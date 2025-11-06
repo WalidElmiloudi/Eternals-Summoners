@@ -10,11 +10,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Maname&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link rel="stylesheet" href="styles.css">
 </head>
 
 <body class="bg-[#070707] font-[cinzel]">
-  <header>
-    <div class="hidden 2xl:flex py-2 items-center justify-around fixed w-full">
+
+  <header id="header">
+    <div class="hidden 2xl:flex py-2 items-center justify-around fixed w-full z-100">
       <img src="imgs/Copilot_20251029_205337 1.png" alt="ETERNALS SUMMONERS logo">
       <nav>
         <ul class="flex gap-20">
@@ -58,7 +60,8 @@
           <li><a href="guide.html"><img src="imgs/guide mobile icon.png" alt="guide icon"></a></li>
           <li><a href="market.html"><img src="imgs/market mobile icon.png" alt="Market icon"></a></li>
           <li><a href="favoris.html"><img src="imgs/favoris mobile icon.png" alt="favoris icon"></a></li>
-          <li><a href="deck.html"> <img class="scale-90" src="imgs/my deck mobile onpage icon.png" alt="My deck icon"></a></li>
+          <li><a href="deck.html"> <img class="scale-90" src="imgs/my deck mobile onpage icon.png"
+                alt="My deck icon"></a></li>
           <li class="relative">
             <img src="imgs/cart mobile icon.png" alt="cart icon">
             <p class="text-black absolute top-0.5 left-5.5 ">0</p>
@@ -145,7 +148,7 @@
             <hr class="absolute border border-[#9B8400] w-74 border-solid bottom-39.5">
           </div>
         </div>
-        <div
+        <div id="card-1"
           class=" w-86 h-114 bg-black flex justify-center items-center relative 2xl:scale-140 hover:scale-145 ease-in-out duration-150 cursor-pointer">
           <div class=" border-3 border-[#9B8400] w-79 h-109 flex flex-col items-center pt-2">
             <div class="border-2 border-[#9B8400] w-74 h-69 ">
@@ -170,7 +173,7 @@
               <hr class="border-0.5 border-[#BEA301] w-10">
               <div class="w-1.25 h-1.25 bg-[#BEA301] rotate-45"></div>
             </div>
-            <p class="text-xs text-[#BEA301] -mt-2">DIVINE SUMMONER</p>
+            <p id="role" class="text-xs text-[#BEA301] -mt-2">DIVINE SUMMONER</p>
             <p class="border border-[#BEA301] text-xs text-[#BEA301] px-2 rounded-xl">LIGHT</p>
             <DIv class="flex relative">
               <div class="flex flex-col absolute -top-6.5 -left-12 items-center">
@@ -192,7 +195,7 @@
             <hr class="absolute border border-[#9B8400] w-74 border-solid bottom-39.5">
           </div>
         </div>
-        <div
+        <div id="card-2"
           class=" w-86 h-114 bg-black hidden lg:flex justify-center items-center relative 2xl:scale-140 hover:scale-145 ease-in-out duration-150 cursor-pointer">
           <div class=" border-3 border-[#9B8400] w-79 h-109 flex flex-col items-center pt-2">
             <div class="border-2 border-[#9B8400] w-74 h-69 ">
@@ -280,5 +283,7 @@
     </div>
     <p class="text-xs text-white mt-5 mb-23 xl:text-3xl xl:mb-10 2xl:mt-20">All rights reserved@genZdevs.co </p>
   </footer>
+  <script src="script.js"></script>
 </body>
+
 </html>

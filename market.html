@@ -14,7 +14,7 @@
 
 <body class="bg-[#070707] font-[cinzel]">
   <header>
-    <div class="hidden 2xl:flex py-2 items-center justify-around fixed w-full">
+    <div class="hidden 2xl:flex py-2 items-center justify-around fixed w-full z-100">
       <img src="imgs/Copilot_20251029_205337 1.png" alt="ETERNALS SUMMONERS logo">
       <nav>
         <ul class="flex gap-20">
@@ -93,35 +93,25 @@
         Them</p>
       <hr class="border-[#BEA301] border-2 w-90">
     </section>
-    <section>
-      <div class="flex justify-between xl:justify-around py-5">
-        <p class="text-[#8800FF] text-xs xl:text-2xl">Above The Rank</p>
-        <p class="text-[#FF0000] text-xs xl:text-2xl">Mythical</p>
-        <p class="text-[#BEA301] text-xs xl:text-2xl">Legendary</p>
-        <p class="text-[#0077FF] text-xs xl:text-2xl">Epic</p>
-        <p class="text-[#15FF00] text-xs xl:text-2xl">Rare</p>
-        <p class="text-white text-xs xl:text-2xl">Common</p>
+    <section class="flex flex-col items-center">
+      <div class="flex justify-between xl:justify-around py-5 gap-2.5 2xl:gap-18 xl:gap-12">
+        <p class="filter-btn text-[#8800FF] text-[10px] xl:text-2xl cursor-pointer" data-rarity="Above The Rank">Above The Rank</p>
+        <p class="filter-btn text-[#FF0000] text-xs xl:text-2xl cursor-pointer" data-rarity="Mythical">Mythical</p>
+        <p class="filter-btn text-[#BEA301] text-xs xl:text-2xl cursor-pointer" data-rarity="Legendary">Legendary</p>
+        <p class="filter-btn text-[#0077FF] text-xs xl:text-2xl cursor-pointer" data-rarity="Epic">Epic</p>
+        <p class="filter-btn text-[#15FF00] text-xs xl:text-2xl cursor-pointer" data-rarity="Rare">Rare</p>
+        <p class="filter-btn text-white text-xs xl:text-2xl cursor-pointer" data-rarity="Common">Common</p>
       </div>
-      <div>
+      <div id="cardsDisplay" class="grid grid-cols-2 xl:grid-cols-3 2xl:grid-cols-3 gap-x-4 gap-y-4 justify-items-center 2xl:w-277 ">
 
       </div>
-      <div class="flex gap-x-5 justify-center my-10 2xl:my-20 hidden">
-        <div class="w-15 h-15 xl:w-20 xl:h-20 border border-[#BEA301] flex justify-center items-center rounded-full">
-          <p class="text-2xl xl:text-3xl text-[#BEA301]"><</p>
+      <div id="pagination" class="flex gap-x-5 justify-center my-10 2xl:my-20">
+        <div id="prevPage" class="w-15 h-15 xl:w-20 xl:h-20 border border-[#BEA301] flex justify-center items-center rounded-full cursor-pointer">
+          <p class="text-2xl xl:text-3xl text-[#BEA301]">&lt;</p>
         </div>
-        <div class="flex gap-x-2">
-          <div class="w-15 h-15 xl:w-20 xl:h-20  border border-[#BEA301] flex justify-center items-center rounded-full">
-            <p class="text-2xl text-[#BEA301] xl:text-3xl">1</p>
-          </div>
-          <div class="w-15 h-15  xl:w-20 xl:h-20 border border-[#BEA301] flex justify-center items-center rounded-full">
-            <p class="text-2xl text-[#BEA301] xl:text-3xl">2</p>
-          </div>
-          <div class="w-15 h-15 xl:w-20 xl:h-20  border border-[#BEA301] flex justify-center items-center rounded-full">
-            <p class="text-2xl text-[#BEA301] xl:text-3xl">3</p>
-          </div>
-        </div>
-        <div class="w-15 h-15 xl:w-20 xl:h-20  border border-[#BEA301] flex justify-center items-center rounded-full">
-          <p class="text-2xl text-[#BEA301] xl:text-3xl">></p>
+        <div id="pageNumbers" class="flex gap-x-2"></div>
+        <div id="nextPage" class="w-15 h-15 xl:w-20 xl:h-20  border border-[#BEA301] flex justify-center items-center rounded-full cursor-pointer">
+          <p class="text-2xl text-[#BEA301] xl:text-3xl">&gt;</p>
         </div>
       </div>
     </section>

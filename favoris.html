@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ETERNALS SUMMONERS | MY DECK</title>
+  <title>ETERNALS SUMMONERS | FAVORIS</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap" rel="stylesheet">
@@ -12,7 +12,7 @@
 </head>
 <body class="bg-[#070707] font-[cinzel]">
   <header>
-    <div class="hidden 2xl:flex py-2 items-center justify-around fixed w-full">
+    <div class="hidden 2xl:flex py-2 items-center justify-around fixed w-full z-100">
       <img src="imgs/Copilot_20251029_205337 1.png" alt="ETERNALS SUMMONERS logo">
       <nav>
         <ul class="flex gap-20">
@@ -97,12 +97,10 @@
           <hr class="border-[#BEA301] border w-21">
         </div>
       </section>
-      <section>
-        <div>
-
-        </div>
-        <div class="flex justify-center py-20 "><p class="text-sm text-white xl:text-2xl">“Vous n’avez encore aucune carte en favoris.”</p></div>
-        <div class="flex gap-x-5 justify-center my-10 2xl:my-20 hidden">
+      <section class="flex flex-col items-center">
+        <div id="favoritesDisplay" class="grid grid-cols-2 xl:grid-cols-3 2xl:grid-cols-3 gap-x-4 gap-y-4 justify-items-center 2xl:w-277 "></div>
+        <div class=" justify-center py-20  hidden"><p class="text-sm text-white xl:text-2xl">“Vous n’avez encore aucune carte en favoris.”</p></div>
+        <div class=" gap-x-5 justify-center my-10 2xl:my-20 hidden">
           <div class="w-15 h-15 xl:w-20 xl:h-20 border border-[#BEA301] flex justify-center items-center rounded-full">
             <p class="text-2xl xl:text-3xl text-[#BEA301]">
               <</p>
@@ -127,5 +125,6 @@
         </div>
       </section>
   </main>
+  <script src="script.js"></script>
 </body>
 </html>
