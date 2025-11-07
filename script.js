@@ -32,10 +32,6 @@ function displayCards(cards) {
   const container = document.getElementById("cardsDisplay");
   container.innerHTML = "";
 
-  const totalPages = Math.ceil(cards.length / cardsPerPage);
-  const startIndex = (currentPage - 1) * cardsPerPage;
-  const endIndex = startIndex + cardsPerPage;
-  const cardsToDisplay = cards.slice(startIndex, endIndex);
 
   cards.forEach(card => {
     const price = prices[card.rarity];
@@ -131,63 +127,9 @@ function displayCards(cards) {
     }
 });
   });
-   displayPagination(totalPages, cards);
 
 }
 
-function displayPagination(totalPages, cards) {
-  const paginationContainer = document.getElementById("pagination");
-  if (!paginationContainer) return;
-  
-  paginationContainer.innerHTML = "";
-
-  if (totalPages <= 1) return; 
-
-  const paginationDiv = document.createElement("div");
-  paginationDiv.className = "flex items-center justify-center gap-2 mt-4";
-
-  const prevBtn = document.createElement("button");
-  prevBtn.innerHTML = "Previous";
-  prevBtn.className = `px-4 py-2 text-white border border-white rounded ${currentPage === 1 ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer hover:bg-white hover:text-black'}`;
-  prevBtn.disabled = currentPage === 1;
-  prevBtn.addEventListener("click", () => {
-    if (currentPage > 1) {
-      currentPage--;
-      displayCards(cards);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-  });
-  paginationDiv.appendChild(prevBtn);
-
-
-  for (let i = 1; i <= totalPages; i++) {
-    const pageBtn = document.createElement("button");
-    pageBtn.innerHTML = i;
-    pageBtn.className = `px-3 py-2 text-white border border-white rounded cursor-pointer ${i === currentPage ? 'bg-white text-black' : 'hover:bg-white hover:text-black'}`;
-    pageBtn.addEventListener("click", () => {
-      currentPage = i;
-      displayCards(cards);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-    paginationDiv.appendChild(pageBtn);
-  }
-
-
-  const nextBtn = document.createElement("button");
-  nextBtn.innerHTML = "Next";
-  nextBtn.className = `px-4 py-2 text-white border border-white rounded ${currentPage === totalPages ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer hover:bg-white hover:text-black'}`;
-  nextBtn.disabled = currentPage === totalPages;
-  nextBtn.addEventListener("click", () => {
-    if (currentPage < totalPages) {
-      currentPage++;
-      displayCards(cards);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-  });
-  paginationDiv.appendChild(nextBtn);
-
-  paginationContainer.appendChild(paginationDiv);
-}
 
 function filterByRarity(rarity) {
   currentPage = 1;
