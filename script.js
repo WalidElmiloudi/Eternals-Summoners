@@ -20,31 +20,6 @@ let carts = [];
 let allCards = [];
 let deck = [];
 
-const header = document.querySelector(".header");
-
-window.addEventListener ("scroll", function() {
-	header.classList.toggle ("stick", window.scrollY > 0);
-});
-
-document.querySelector(".q1").addEventListener("click",()=>{
- document.querySelector(".a1").classList.toggle("hidden");
-});
-
-document.querySelector(".q2").addEventListener("click",()=>{
- document.querySelector(".a2").classList.toggle("hidden");
-});
-
-document.querySelector(".q3").addEventListener("click",()=>{
- document.querySelector(".a3").classList.toggle("hidden");
-});
-
-document.querySelector(".q4").addEventListener("click",()=>{
- document.querySelector(".a4").classList.toggle("hidden");
-});
-
-document.querySelector(".q5").addEventListener("click",()=>{
- document.querySelector(".a5").classList.toggle("hidden");
-});
 
 async function loadCards() {
   const res = await fetch("cards.json");
@@ -699,4 +674,29 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
   safeDeckDisplay();
+});
+const header = document.querySelector(".header");
+
+window.addEventListener ("scroll", function() {
+	header.classList.toggle ("stick", window.scrollY > 0);
+});
+
+document.querySelector(".q1").addEventListener("click",()=>{
+ document.querySelector(".a1").classList.toggle("hidden");
+});
+
+document.querySelector(".q2").addEventListener("click",()=>{
+ document.querySelector(".a2").classList.toggle("hidden");
+});
+
+document.querySelector(".q3").addEventListener("click",()=>{
+ document.querySelector(".a3").classList.toggle("hidden");
+});
+
+document.querySelector(".q4").addEventListener("click",()=>{
+ document.querySelector(".a4").classList.toggle("hidden");
+});
+
+document.querySelector(".q5").addEventListener("click",()=>{
+ document.querySelector(".a5").classList.toggle("hidden");
 });
