@@ -11,12 +11,15 @@
   <link href="https://fonts.googleapis.com/css2?family=Maname&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   <link rel="stylesheet" href="styles.css">
-</head>
+  <link rel='stylesheet'
+    href='https://cdn-uicons.flaticon.com/3.0.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+  <link rel="stylesheet" href="styles.css">
+  </head>
 
-<body class="bg-[#070707] font-[cinzel]">
+<body class="bg-[#070707] font-[cinzel] relative">
 
-  <header id="header">
-    <div class="hidden 2xl:flex py-2 items-center justify-around fixed w-full z-100">
+  <header>
+    <div class="header hidden 2xl:flex py-2 items-center justify-around fixed w-full z-100">
       <img src="imgs/Copilot_20251029_205337 1.png" alt="ETERNALS SUMMONERS logo">
       <nav>
         <ul class="flex gap-20">
@@ -30,9 +33,9 @@
               Deck</a></li>
           <li class="hover:scale-110 ease-in-out duration-150"><a class="text-3xl text-[#C7A900] "
               href="favoris.html">Favoris</a></li>
-          <li class="hover:scale-110 ease-in-out duration-150 relative cursor-pointer">
+          <li class="hover:scale-110 ease-in-out duration-150 relative cursor-pointer cart">
             <img class="" src="imgs/Shopping cart.png" alt="Shopping cart icon">
-            <div class="w-4 h-4 bg-[#BEA301] flex justify-center items-center rounded-full absolute -top-1 -right-1">0
+            <div class="w-4 h-4 bg-[#BEA301] flex justify-center items-center rounded-full absolute -top-1 -right-1 counts">0
             </div>
           </li>
         </ul>
@@ -45,9 +48,9 @@
           <li><a href="guide.html"><img src="imgs/guide mobile icon.png" alt="guide icon"></a></li>
           <li><a href="#"><img src="imgs/home mobile onpage icon.png" alt="home icon"></a></li>
           <li><a href="favoris.html"><img src="imgs/favoris mobile icon.png" alt="favoris icon"></a></li>
-          <li class="relative">
+          <li class="relative cart">
             <img src="imgs/cart mobile icon.png" alt="cart icon">
-            <p class="text-black absolute top-0.5 left-5.5 ">0</p>
+            <p class="text-black absolute top-0.5 left-5.5 counts">0</p>
           </li>
         </ul>
       </nav>
@@ -62,15 +65,32 @@
           <li><a href="favoris.html"><img src="imgs/favoris mobile icon.png" alt="favoris icon"></a></li>
           <li><a href="deck.html"> <img class="scale-90" src="imgs/my deck mobile onpage icon.png"
                 alt="My deck icon"></a></li>
-          <li class="relative">
+          <li  class="relative cart">
             <img src="imgs/cart mobile icon.png" alt="cart icon">
-            <p class="text-black absolute top-0.5 left-5.5 ">0</p>
+            <p  class="text-black absolute top-0.5 left-5.5 counts">0</p>
           </li>
         </ul>
       </nav>
     </div>
   </header>
-  <main class="xl:w-292 2xl:w-full">
+  <main class="xl:w-292 2xl:w-full relative">
+    <section id="cartpopup"
+      class="flex justify-center items-center w-full h-screen font-[cinzel] fixed -top-7.5 right-0 z-50 xl:scale-65 xl:right-10 xl:top-0 xl:w-110 xl:rounded-full 2xl:rounded-full xl:h-233 2xl:top-2 2xl:scale-80 hidden">
+      <div class="w-full h-218 xl:h-250 2xl:h-250 bg-[#BEA301] relative flex flex-col items-center justify-center gap-5 xl:rounded-sm 2xl:rounded-sm">
+        <a href="deck.html" class="hover:w-2 xl:hidden"> <img class="absolute top-0 right-0" src="imgs/cart-deck.png"
+            alt="My deck icon"></a>
+        <h1 class="text-black text-3xl font-bold">Shopping Cart</h1>
+        <hr class="w-98 border">
+        <div id="cartDisplay" class="bg-[#897500] w-94 h-161.5 flex flex-col items-center gap-1 overflow-y-auto  pt-1">
+         
+      </div>
+       <hr class="w-98 border">
+        <div class="flex items-center w-98 h-12 justify-between">
+          <h1 class="text-black text-3xl font-bold">Totale :</h1>
+          <p class="text-black text-2xl font-bold">$<span id="total">0</span> USD</p>
+        </div>
+        <button id="order" class="text-3xl text-[#BEA301] font-bold bg-black py-2 px-12 rounded-full cursor-pointer mb-5">Order</button>
+    </section>
     <section>
       <div class="hidden lg:flex flex-col 2xl:items-center">
         <img class="xl:w-278 xl:h-262 " src="imgs/home-hero-img.png" alt="the hero image of the home page">

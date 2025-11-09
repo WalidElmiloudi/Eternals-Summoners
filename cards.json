@@ -403,7 +403,7 @@
       "description": "Horned brute of despair",
       "bg-img": "imgs/epic card bg.png",
       "caracter": "imgs/gravemarch varnok.png",
-      "txt-color": "text-[#0077FF",
+      "txt-color": "text-[#0077FF]",
       "id": 29
     },
     {

@@ -1,0 +1,20 @@
+.stick{
+  background:#000000;
+  box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+}
+#cartDisplay::-webkit-scrollbar {
+  width: 8px;
+}
+
+#cartDisplay::-webkit-scrollbar-track {
+  background: #897500;
+}
+
+#cartDisplay::-webkit-scrollbar-thumb {
+  background: #BEA301;
+  border-radius: 4px;
+}
+
+#cartDisplay::-webkit-scrollbar-thumb:hover {
+  background: #D6B601;
+}
