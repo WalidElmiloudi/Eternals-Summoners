@@ -465,7 +465,7 @@ function displayCarts() {
         qtyDisplay.textContent = quantityOrder;
 
         let storedCarts = JSON.parse(localStorage.getItem("carts")) || [];
-        const cartIndex = storedCarts.findIndex(c => c.id === card.id);
+        const cartIndex = storedCarts.findIndex(cart => cart.id === card.id);
         if (cartIndex !== -1) {
           storedCarts[cartIndex].quantityOrder = quantityOrder;
           localStorage.setItem("carts", JSON.stringify(storedCarts));
@@ -553,18 +553,8 @@ function deckDisplay() {
   }
 
   deck.forEach(card => {
-    const price = prices[card.rarity];
-    const quantity = quantities[card.rarity];
     const cardDiv = document.createElement("div");
 
-    const storedCarts = JSON.parse(localStorage.getItem("carts")) || [];
-    const isInCart = storedCarts.find(cart => cart.id === card.id);
-    const buttonText = isInCart ? "Added To Cart" : "Add To Cart";
-    const buttonColor = isInCart ? "text-[#bea301]" : "text-white";
-
-    const storedFavs = JSON.parse(localStorage.getItem("favorites")) || [];
-    const isInFav = storedFavs.find(fav => fav.id === card.id);
-    const buttonColorFav = isInFav ? "text-[#bea301]" : "text-white";
 
     cardDiv.innerHTML = `
        <div class="w-39.5 h-64 border border-white flex flex-col justify-around items-center xl:scale-160 xl:mt-20 xl:mx-20 xl:my-30 2xl:scale-200 2xl:mt-40">
