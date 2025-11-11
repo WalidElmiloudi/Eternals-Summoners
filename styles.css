@@ -18,3 +18,19 @@
 #cartDisplay::-webkit-scrollbar-thumb:hover {
   background: #D6B601;
 }
+#playDeckDisplay::-webkit-scrollbar {
+  width: 8px;
+}
+
+#playDeckDisplay::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+#playDeckDisplay::-webkit-scrollbar-thumb {
+  background: #BEA301;
+  border-radius: 4px;
+}
+
+#playDeckDisplay::-webkit-scrollbar-thumb:hover {
+  background: #D6B601;
+}

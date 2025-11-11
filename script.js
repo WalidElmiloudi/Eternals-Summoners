@@ -19,7 +19,8 @@ let favorites = [];
 let carts = [];
 let allCards = [];
 let deck = [];
-
+let Hand = [0, 0, 0, 0, 0];
+let inHand = [];
 
 async function loadCards() {
   const res = await fetch("cards.json");
@@ -36,7 +37,7 @@ function displayCards(cards) {
   cards.forEach(card => {
     const price = prices[card.rarity];
     const storedQuantities = JSON.parse(localStorage.getItem("quantities")) || quantities;
-const quantity = storedQuantities[card.rarity];
+    const quantity = storedQuantities[card.rarity];
     const cardDiv = document.createElement("div");
 
     const storedCarts = JSON.parse(localStorage.getItem("carts")) || [];
@@ -157,7 +158,7 @@ const quantity = storedQuantities[card.rarity];
       updateCartCounter();
       updateTotalPrice();
       updateCartButtons();
-      displayCards(allCards)
+      displayCards(allCards);
     });
   });
 
@@ -201,13 +202,16 @@ function filterByRarity(rarity) {
 }
 document.addEventListener("DOMContentLoaded", () => {
   if (!localStorage.getItem("quantities")) {
-  localStorage.setItem("quantities", JSON.stringify(quantities));
-}
+    localStorage.setItem("quantities", JSON.stringify(quantities));
+  }
   loadCards();
   updateCartCounter();
   updateTotalPrice();
   updateCartButtons();
   updateFavorisButtons();
+  playDisplay();
+  updateDeckCounter();
+  drawCard();
 
   document.querySelectorAll(".filter-btn").forEach(btn => {
     btn.addEventListener("click", () => {
@@ -548,7 +552,7 @@ function deckDisplay() {
   const deck = JSON.parse(localStorage.getItem("deck")) || [];
 
   if (deck.length === 0) {
-    deckContainer.innerHTML = "<p class='text-gray-500'>No items in your deck yet.</p>";
+    deckContainer.innerHTML = "<p class='text-[#bea301]'>No items in your deck yet.</p>";
     return;
   }
 
@@ -644,7 +648,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const storedCarts = JSON.parse(localStorage.getItem("carts")) || [];
 
       if (storedCarts.length > 0) {
-       
+
         deck = deck.concat(storedCarts);
 
         saveDeck();
@@ -667,26 +671,212 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 const header = document.querySelector(".header");
 
-window.addEventListener ("scroll", function() {
-	header.classList.toggle ("stick", window.scrollY > 0);
+window.addEventListener("scroll", function () {
+  header.classList.toggle("stick", window.scrollY > 0);
 });
 
-document.querySelector(".q1").addEventListener("click",()=>{
- document.querySelector(".a1").classList.toggle("hidden");
+document.querySelector(".q1").addEventListener("click", () => {
+  document.querySelector(".a1").classList.toggle("hidden");
 });
 
-document.querySelector(".q2").addEventListener("click",()=>{
- document.querySelector(".a2").classList.toggle("hidden");
+document.querySelector(".q2").addEventListener("click", () => {
+  document.querySelector(".a2").classList.toggle("hidden");
 });
 
-document.querySelector(".q3").addEventListener("click",()=>{
- document.querySelector(".a3").classList.toggle("hidden");
+document.querySelector(".q3").addEventListener("click", () => {
+  document.querySelector(".a3").classList.toggle("hidden");
 });
 
-document.querySelector(".q4").addEventListener("click",()=>{
- document.querySelector(".a4").classList.toggle("hidden");
+document.querySelector(".q4").addEventListener("click", () => {
+  document.querySelector(".a4").classList.toggle("hidden");
 });
 
-document.querySelector(".q5").addEventListener("click",()=>{
- document.querySelector(".a5").classList.toggle("hidden");
+document.querySelector(".q5").addEventListener("click", () => {
+  document.querySelector(".a5").classList.toggle("hidden");
 });
+
+function playDisplay() {
+  const ownedCardsContainer = document.getElementById("playDeckDisplay");
+  ownedCardsContainer.innerHTML = "";
+
+  const deck = JSON.parse(localStorage.getItem("deck")) || [];
+
+  if (deck.length === 0) {
+    ownedCardsContainer.innerHTML = "<p class='text-[#bea301]'>No items in your deck.</p>";
+    return;
+  }
+
+  deck.forEach(card => {
+    const cardDiv = document.createElement("div");
+
+
+    cardDiv.innerHTML = `
+    <div class="w-35.5 h-47.5 bg-black flex justify-center items-center scale-70 xl:scale-120 2xl:scale-180 -mt-6 -mb-6 xl:mt-6 xl:mb-6 2xl:mt-20 2xl:mb-20">
+      <div class="w-33 h-45.25 border border-[#bea301] flex flex-col items-center justify-evenly overflow-hidden">
+        <div class="w-31  border border-[#bea301] relative">
+          <img  class="animate-pulse" src="${card['bg-img']}" alt="${card['rarity']} background">
+          <img class="absolute bottom-0 right-0" src="${card['caracter']}" alt="${card['name']}">
+          <div
+            class="w-3.5 h-3.5 bg-black border border-[#bea301] absolute z-20 flex justify-center items-center top-0 rotate-45">
+            <p class="${card['txt-color']} text-xs -rotate-45">${card['power']}</p>
+          </div>
+        </div>
+        <div class="flex relative -mt-0.5">
+          <div class="w-1 h-1 border border-[#bea301] bg-black absolute rotate-45 -left-1.5 top-1 z-10"></div>
+          <div class="w-2 h-2 border border-[#bea301] bg-black absolute rotate-45 -left-1 top-0.5"></div>
+          <div class="w-21.5 h-3 border border-[#bea301] flex justify-center items-center rounded-full">
+            <p class="${card['txt-color']} text-[6px]">${card['name']}</p>
+          </div>
+          <div class="w-2 h-2 border border-[#bea301] bg-black absolute rotate-45 -right-1 top-0.5"></div>
+          <div class="w-1 h-1 border border-[#bea301] bg-black absolute rotate-45 -right-1.5 top-1"></div>
+        </div>
+        <div>
+
+        </div>
+        <div class="flex relative items-center -mt-2">
+          <div class="flex items-center relative -top-0.25">
+            <div class="w-0.75 h-0.75 bg-[#BEA301] rotate-45"></div>
+            <hr class="w-5 border-0.5 border-[#BEA301]">
+          </div>
+          <p class="text-[7px] ${card['txt-color']}">${card['rarity']}</p>
+          <div class="flex items-center relative -top-0.25">
+            <hr class="w-5 border-0.5 border-[#BEA301]">
+            <div class="w-0.75 h-0.75  bg-[#BEA301] rotate-45"></div>
+          </div>
+        </div>
+        <p class="text-[5px] ${card['txt-color']} -mt-1.75">${card['role']}</p>
+        <div class="border border-[#BEA301] py-0.25 px-1 flex items-center justify-center rounded-full -mt-1">
+          <p class="text-[5px] ${card['txt-color']}">${card['element']}</p>
+        </div>
+        <div class="flex relative w-full justify-center items-end">
+          <div class="flex flex-col items-center absolute -bottom-1 left-0.5">
+            <p class="text-[5px] text-[#BEA301]">${card['atk']} Pt</p>
+            <div class="border border-[#BEA301] flex items-center justify-center rounded-full w-5.5 h-5.5">
+              <img src="imgs/atk icon.png" alt=" swords">
+            </div>
+          </div>
+          <p class="text-[4.5px] text-[#bea301]">"<span class="${card['txt-color']}"> ${card['description']} </span>"</p>
+          <div class="flex flex-col items-center absolute -bottom-1 right-0.5">
+            <p class="text-[5px] text-[#BEA301]">${card['def']} Pt</p>
+            <div class="border border-[#BEA301] flex items-center justify-center rounded-full w-5.5 h-5.5">
+              <img src="imgs/def icon.png" alt=" shield">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+    `;
+    ownedCardsContainer.appendChild(cardDiv);
+  });
+}
+
+function updateDeckCounter() {
+  const storeddeck = JSON.parse(localStorage.getItem("deck")) || [];
+  const counterElement = document.querySelector(".deckCounter");
+  let counter = storeddeck.length
+  if (counterElement) {
+    counterElement.textContent = counter;
+    counter--;
+  } else {
+    console.error("Counter element with id 'counts' not found!");
+  }
+}
+
+function drawCard() {
+  const storedDeck = JSON.parse(localStorage.getItem("deck")) || [];
+  const index = storedDeck.length;
+  const randCard = Math.floor(Math.random() * index);
+  const card = storedDeck[randCard];
+  const drawing = document.querySelector("#Drawer");
+  drawing.addEventListener("click", () => {
+    for (let i = 0; i < Hand.length; i++) {
+      const randCard = Math.floor(Math.random() * index);
+      const card = storedDeck[randCard];
+      if (Hand[i] === 0) {
+        const hand = document.querySelector(`#hand-${i + 1}`);
+        hand.innerHTML = ` <div id="card-${i+1}" class="w-35.5 h-47.5 bg-black flex justify-center items-center scale-38 xl:scale-80 2xl:scale-120" draggable="true"
+            ondragstart="dragstartHandler(event)">
+      <div class="w-33 h-45.25 border border-[#bea301] flex flex-col items-center justify-evenly overflow-hidden">
+        <div class="w-31  border border-[#bea301] relative">
+          <img  class="animate-pulse" src="${card['bg-img']}" alt="${card['rarity']} background">
+          <img class="absolute bottom-0 right-0" src="${card['caracter']}" alt="${card['name']}">
+          <div
+            class="w-3.5 h-3.5 bg-black border border-[#bea301] absolute z-20 flex justify-center items-center top-0 rotate-45">
+            <p class="${card['txt-color']} text-xs -rotate-45">${card['power']}</p>
+          </div>
+        </div>
+        <div class="flex relative -mt-0.5">
+          <div class="w-1 h-1 border border-[#bea301] bg-black absolute rotate-45 -left-1.5 top-1 z-10"></div>
+          <div class="w-2 h-2 border border-[#bea301] bg-black absolute rotate-45 -left-1 top-0.5"></div>
+          <div class="w-21.5 h-3 border border-[#bea301] flex justify-center items-center rounded-full">
+            <p class="${card['txt-color']} text-[6px]">${card['name']}</p>
+          </div>
+          <div class="w-2 h-2 border border-[#bea301] bg-black absolute rotate-45 -right-1 top-0.5"></div>
+          <div class="w-1 h-1 border border-[#bea301] bg-black absolute rotate-45 -right-1.5 top-1"></div>
+        </div>
+        <div>
+
+        </div>
+        <div class="flex relative items-center -mt-2">
+          <div class="flex items-center relative -top-0.25">
+            <div class="w-0.75 h-0.75 bg-[#BEA301] rotate-45"></div>
+            <hr class="w-5 border-0.5 border-[#BEA301]">
+          </div>
+          <p class="text-[7px] ${card['txt-color']}">${card['rarity']}</p>
+          <div class="flex items-center relative -top-0.25">
+            <hr class="w-5 border-0.5 border-[#BEA301]">
+            <div class="w-0.75 h-0.75  bg-[#BEA301] rotate-45"></div>
+          </div>
+        </div>
+        <p class="text-[5px] ${card['txt-color']} -mt-1.75">${card['role']}</p>
+        <div class="border border-[#BEA301] py-0.25 px-1 flex items-center justify-center rounded-full -mt-1">
+          <p class="text-[5px] ${card['txt-color']}">${card['element']}</p>
+        </div>
+        <div class="flex relative w-full justify-center items-end">
+          <div class="flex flex-col items-center absolute -bottom-1 left-0.5">
+            <p class="text-[5px] text-[#BEA301]">${card['atk']} Pt</p>
+            <div class="border border-[#BEA301] flex items-center justify-center rounded-full w-5.5 h-5.5">
+              <img src="imgs/atk icon.png" alt=" swords">
+            </div>
+          </div>
+          <p class="text-[4.5px] text-[#bea301]">"<span class="${card['txt-color']}"> ${card['description']} </span>"</p>
+          <div class="flex flex-col items-center absolute -bottom-1 right-0.5">
+            <p class="text-[5px] text-[#BEA301]">${card['def']} Pt</p>
+            <div class="border border-[#BEA301] flex items-center justify-center rounded-full w-5.5 h-5.5">
+              <img src="imgs/def icon.png" alt=" shield">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+    `;
+        Hand[i] = 1;
+        storedDeck.splice(randCard, 1);
+        break;
+      }
+      
+    }
+  })
+
+}
+function dragstartHandler(ev) {
+  ev.dataTransfer.setData("text/card", ev.target.id);
+}
+
+function dragoverHandler(ev) {
+  ev.preventDefault();
+}
+
+function dropHandler(ev) {
+  ev.preventDefault();
+  const data = ev.dataTransfer.getData("text/card");
+  ev.target.appendChild(document.getElementById(data));
+  let match = ev.target.id.match(/card-([^\s]+)/);
+  if(match){
+    let index = parseInt(match[1]);
+    Hand[index - 1] = 0;
+  }
+  console.log("Card dropped!");
+}
