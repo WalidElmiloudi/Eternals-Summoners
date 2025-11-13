@@ -21,6 +21,7 @@ let allCards = [];
 let deck = [];
 let Hand = [0, 0, 0, 0, 0];
 let inHand = [];
+const playDeck = JSON.parse(localStorage.getItem("deck")) || [];
 
 async function loadCards() {
   const res = await fetch("cards.json");
@@ -209,8 +210,8 @@ document.addEventListener("DOMContentLoaded", () => {
   updateTotalPrice();
   updateCartButtons();
   updateFavorisButtons();
-  playDisplay();
-  updateDeckCounter();
+  playDisplay(playDeck);
+  updateDeckCounter(playDeck);
   drawCard();
 
   document.querySelectorAll(".filter-btn").forEach(btn => {
@@ -675,31 +676,34 @@ window.addEventListener("scroll", function () {
   header.classList.toggle("stick", window.scrollY > 0);
 });
 
-document.querySelector(".q1").addEventListener("click", () => {
+const q1 = document.querySelector(".q1")
+q1.addEventListener("click", () => {
   document.querySelector(".a1").classList.toggle("hidden");
 });
 
-document.querySelector(".q2").addEventListener("click", () => {
+const q2 = document.querySelector(".q1")
+q2.addEventListener("click", () => {
   document.querySelector(".a2").classList.toggle("hidden");
 });
 
-document.querySelector(".q3").addEventListener("click", () => {
+const q3 = document.querySelector(".q1")
+q3.addEventListener("click", () => {
   document.querySelector(".a3").classList.toggle("hidden");
 });
 
-document.querySelector(".q4").addEventListener("click", () => {
+const q4 = document.querySelector(".q1")
+q4.addEventListener("click", () => {
   document.querySelector(".a4").classList.toggle("hidden");
 });
 
-document.querySelector(".q5").addEventListener("click", () => {
+const q5 = document.querySelector(".q1")
+q5.addEventListener("click", () => {
   document.querySelector(".a5").classList.toggle("hidden");
 });
 
-function playDisplay() {
+function playDisplay(deck) {
   const ownedCardsContainer = document.getElementById("playDeckDisplay");
   ownedCardsContainer.innerHTML = "";
-
-  const deck = JSON.parse(localStorage.getItem("deck")) || [];
 
   if (deck.length === 0) {
     ownedCardsContainer.innerHTML = "<p class='text-[#bea301]'>No items in your deck.</p>";
@@ -771,8 +775,7 @@ function playDisplay() {
   });
 }
 
-function updateDeckCounter() {
-  const storeddeck = JSON.parse(localStorage.getItem("deck")) || [];
+function updateDeckCounter(storeddeck) {
   const counterElement = document.querySelector(".deckCounter");
   let counter = storeddeck.length
   if (counterElement) {
@@ -783,24 +786,26 @@ function updateDeckCounter() {
   }
 }
 
+let inHandCount = 0;
+
 function drawCard() {
-  const storedDeck = JSON.parse(localStorage.getItem("deck")) || [];
-  const index = storedDeck.length;
+  const index = playDeck.length;
   const randCard = Math.floor(Math.random() * index);
-  const card = storedDeck[randCard];
+  const card = playDeck[randCard];
   const drawing = document.querySelector("#Drawer");
+let count = 0;
   drawing.addEventListener("click", () => {
     for (let i = 0; i < Hand.length; i++) {
       const randCard = Math.floor(Math.random() * index);
-      const card = storedDeck[randCard];
+      const card = playDeck[randCard];
       if (Hand[i] === 0) {
         const hand = document.querySelector(`#hand-${i + 1}`);
-        hand.innerHTML = ` <div id="card-${i+1}" class="w-35.5 h-47.5 bg-black flex justify-center items-center scale-38 xl:scale-80 2xl:scale-120" draggable="true"
+        hand.innerHTML = ` <div id="card-${i + 1}-${count} " class="w-35.5 h-47.5 bg-black flex justify-center items-center scale-38 xl:scale-80 2xl:scale-115 cursor-pointer" draggable="true"
             ondragstart="dragstartHandler(event)">
       <div class="w-33 h-45.25 border border-[#bea301] flex flex-col items-center justify-evenly overflow-hidden">
         <div class="w-31  border border-[#bea301] relative">
-          <img  class="animate-pulse" src="${card['bg-img']}" alt="${card['rarity']} background">
-          <img class="absolute bottom-0 right-0" src="${card['caracter']}" alt="${card['name']}">
+          <img draggable = 'false'   class="animate-pulse" src="${card['bg-img']}" alt="${card['rarity']} background">
+          <img draggable = 'false'  class="absolute bottom-0 right-0" src="${card['caracter']}" alt="${card['name']}">
           <div
             class="w-3.5 h-3.5 bg-black border border-[#bea301] absolute z-20 flex justify-center items-center top-0 rotate-45">
             <p class="${card['txt-color']} text-xs -rotate-45">${card['power']}</p>
@@ -837,14 +842,14 @@ function drawCard() {
           <div class="flex flex-col items-center absolute -bottom-1 left-0.5">
             <p class="text-[5px] text-[#BEA301]">${card['atk']} Pt</p>
             <div class="border border-[#BEA301] flex items-center justify-center rounded-full w-5.5 h-5.5">
-              <img src="imgs/atk icon.png" alt=" swords">
+              <img draggable = 'false'  src="imgs/atk icon.png" alt=" swords">
             </div>
           </div>
           <p class="text-[4.5px] text-[#bea301]">"<span class="${card['txt-color']}"> ${card['description']} </span>"</p>
           <div class="flex flex-col items-center absolute -bottom-1 right-0.5">
             <p class="text-[5px] text-[#BEA301]">${card['def']} Pt</p>
             <div class="border border-[#BEA301] flex items-center justify-center rounded-full w-5.5 h-5.5">
-              <img src="imgs/def icon.png" alt=" shield">
+              <img draggable = 'false'  src="imgs/def icon.png" alt=" shield">
             </div>
           </div>
         </div>
@@ -853,16 +858,20 @@ function drawCard() {
     </div>
     `;
         Hand[i] = 1;
-        storedDeck.splice(randCard, 1);
+        // document.getElementById("inhand").textContent = 
+        playDeck.splice(randCard, 1);
+        updateDeckCounter(playDeck);
+        playDisplay(playDeck);
+        count++;
         break;
       }
-      
+
     }
   })
 
 }
 function dragstartHandler(ev) {
-  ev.dataTransfer.setData("text/card", ev.target.id);
+  ev.dataTransfer.setData("card", ev.target.id);
 }
 
 function dragoverHandler(ev) {
@@ -871,12 +880,45 @@ function dragoverHandler(ev) {
 
 function dropHandler(ev) {
   ev.preventDefault();
-  const data = ev.dataTransfer.getData("text/card");
-  ev.target.appendChild(document.getElementById(data));
-  let match = ev.target.id.match(/card-([^\s]+)/);
-  if(match){
+  const data = ev.dataTransfer.getData("card");
+  const atkBtn = document.getElementById("atk");
+  const defBtn = document.getElementById("def");
+
+  if (ev.target.classList.contains('slot') && ev.target.childElementCount == 0) {
+    ev.target.appendChild(document.getElementById(data));
+    if (!(ev.target.classList.contains('atk')) && !(ev.target.classList.contains('def'))) {
+      ev.target.addEventListener("click", () => {
+        const statutTab = document.getElementById("statut");
+        statutTab.classList.toggle("hidden");
+
+        const currentTarget = ev.target;
+
+        const atkBtn = document.getElementById("atk");
+        const defBtn = document.getElementById("def");
+
+        atkBtn.replaceWith(atkBtn.cloneNode(true));
+        defBtn.replaceWith(defBtn.cloneNode(true));
+
+        const atkBtnNew = document.getElementById("atk");
+        const defBtnNew = document.getElementById("def");
+
+        atkBtnNew.addEventListener("click", () => {
+          currentTarget.classList.remove('def', 'rotate-90', 'scale-70', 'bg-green-600');
+          currentTarget.classList.add('bg-red-600', 'atk');
+          statutTab.classList.toggle("hidden");
+        })
+
+        defBtnNew.addEventListener("click", () => {
+          currentTarget.classList.remove('atk', 'bg-red-600');
+          currentTarget.classList.add('rotate-90', 'scale-70', 'bg-green-600', 'def');
+          statutTab.classList.toggle("hidden");
+        })
+      })
+    }
+  }
+  let match = data.match(/card-([^\s]+)-[^\s]+/);
+  if (match) {
     let index = parseInt(match[1]);
     Hand[index - 1] = 0;
   }
-  console.log("Card dropped!");
 }

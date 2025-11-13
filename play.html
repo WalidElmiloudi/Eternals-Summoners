@@ -33,7 +33,7 @@
       <div class="col-span-10 row-span-1 shadow-[#bea301] shadow-lg/15 flex justify-around items-center">
         <p class="text-[#bea301] text-base font-bold xl:text-xl 2xl:text-2xl">OPPENENT HP : <span
             class="text-[#00ff22]">8000</span></p>
-        <p class="text-[#bea301] text-base font-bold xl:text-xl 2xl:text-2xl">OPPENENT HAND : <span>4</span>/5</p>
+        <p class="text-[#bea301] text-base font-bold xl:text-xl 2xl:text-2xl">OPPENENT HAND : <span>0</span>/5</p>
       </div>
       <div class="col-span-7 row-span-5  grid grid-cols-5 grid-rows-2 gap-1">
         <div class="col-span-5 row-span-1 grid grid-cols-5 grid-rows-1 gap-1">
@@ -44,20 +44,20 @@
           <div class="col-span-1 row-span-1 border border-dashed border-[#bea301] hover:border-[#f70000]"></div>
         </div>
         <div class="col-span-5 row-span-1  grid grid-cols-5 grid-rows-1 gap-1">
-          <div
-            class="col-span-1 row-span-1 border border-dashed border-[#bea301] hover:border-[#06db2a] flex justify-center items-center"
+          <div id="arenaslot1"
+            class="slot col-span-1  row-span-1 border border-dashed border-[#bea301] hover:border-[#06db2a] flex justify-center items-center"
             ondrop="dropHandler(event)" ondragover="dragoverHandler(event)"></div>
-          <div
-            class="col-span-1 row-span-1 border border-dashed border-[#bea301] hover:border-[#06db2a] flex justify-center items-center"
+          <div id="arenaslot2"
+            class="slot col-span-1 row-span-1 border border-dashed border-[#bea301] hover:border-[#06db2a] flex justify-center items-center "
             ondrop="dropHandler(event)" ondragover="dragoverHandler(event)"></div>
-          <div
-            class="col-span-1 row-span-1 border border-dashed border-[#bea301] hover:border-[#06db2a] flex justify-center items-center"
+          <div id="arenaslot3"
+            class="slot col-span-1 row-span-1 border border-dashed border-[#bea301] hover:border-[#06db2a] flex justify-center items-center"
             ondrop="dropHandler(event)" ondragover="dragoverHandler(event)"></div>
-          <div
-            class="col-span-1 row-span-1 border border-dashed border-[#bea301] hover:border-[#06db2a] flex justify-center items-center"
+          <div id="arenaslot4"
+            class="slot col-span-1 row-span-1 border border-dashed border-[#bea301] hover:border-[#06db2a] flex justify-center items-center"
             ondrop="dropHandler(event)" ondragover="dragoverHandler(event)"></div>
-          <div
-            class="col-span-1 row-span-1 border border-dashed border-[#bea301] hover:border-[#06db2a] flex justify-center items-center"
+          <div id="arenaslot5"
+            class="slot col-span-1 row-span-1 border border-dashed border-[#bea301] hover:border-[#06db2a] flex justify-center items-center"
             ondrop="dropHandler(event)" ondragover="dragoverHandler(event)"></div>
         </div>
       </div>
@@ -73,17 +73,17 @@
           <p class="text-[#bea301] text-sm font-bold xl:text-2xl 2xl:text-3xl">Your Turn</p>
           <p class="text-[#bea301] text-sm font-bold xl:text-2xl 2xl:text-3xl">SUMMON : <span
               class="text-[#00ff22]">USED</span></p>
-          <p class="text-[#bea301] text-sm font-bold xl:text-2xl 2xl:text-3xl">YOUR HAND : <span>4</span>/5</p>
+          <p class="text-[#bea301] text-sm font-bold xl:text-2xl 2xl:text-3xl">YOUR HAND : <span id="inhand">0</span>/5</p>
         </DIV>
         <DIV class="flex flex-col py-1 px-1 gap-2 xl:gap-4">
-          <div class="flex justify-around xl:justify-between">
+          <div id="statut" class="flex justify-around xl:justify-between hidden">
             <button
-              class="text-white font-bold bg-red-600 py-1 px-1 rounded-sm cursor-pointer text-sm xl:px-2 xl:text-2xl 2xl:text-4xl 2xl:py-5 2xl:px-5">ATTACK</button>
+             id="atk" class="text-white font-bold bg-red-600 py-1 px-1 rounded-sm cursor-pointer text-sm xl:px-2 xl:text-2xl 2xl:text-4xl 2xl:py-5 2xl:px-5">ATTACK</button>
             <button
-              class="text-white font-bold bg-green-600 py-1 px-0.5 rounded-sm cursor-pointer text-sm xl:px-2 xl:text-2xl 2xl:text-4xl 2xl:py-5 2xl:px-5">DEFENSE</button>
+             id="def" class="text-white font-bold bg-green-600 py-1 px-0.5 rounded-sm cursor-pointer text-sm xl:px-2 xl:text-2xl 2xl:text-4xl 2xl:py-5 2xl:px-5">DEFENSE</button>
           </div>
           <button
-            class="text-white font-bold bg-blue-600 py-1 rounded-sm cursor-pointer text-sm xl:text-2xl 2xl:text-3xl 2xl:py-5">END
+            class="text-white font-bold bg-blue-600 py-1 rounded-sm cursor-pointer text-sm xl:text-2xl 2xl:text-3xl 2xl:py-5 ">END
             TURN</button>
         </DIV>
       </div>
