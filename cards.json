@@ -24,7 +24,7 @@
       "power": 10,
       "description": "Nature incarnate",
       "bg-img": "imgs/mythical card bg.png",
-      "caracter": "imgs/verdant sovereign.png",
+      "caracter": "imgs/Verdant sovereign.png",
       "txt-color": "text-[#FF0000]",
       "id": 2
     },
