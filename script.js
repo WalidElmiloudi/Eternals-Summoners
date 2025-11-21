@@ -221,9 +221,10 @@ document.addEventListener("DOMContentLoaded", () => {
   updateTotalPrice();
   updateCartButtons();
   updateFavorisButtons();
-  playDisplay(playDeck);
-  updateDeckCounter(playDeck);
-  drawCard();
+  // playDisplay(playDeck);
+  // updateDeckCounter(playDeck);
+  // drawCard();
+  restack();
 
   document.querySelectorAll(".filter-btn").forEach(btn => {
     btn.addEventListener("click", () => {
@@ -241,10 +242,10 @@ function displayFavorites() {
 
   const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
 
-  if (favorites.length === 0) {
-    favContainer.innerHTML = "<p class='text-white'>No favorite cards yet!</p>";
-    return;
-  }
+  // if (favorites.length === 0) {
+  //   favContainer.innerHTML = "<p class='text-white'>No favorite cards yet!</p>";
+  //   return;
+  // }
 
   favorites.forEach(card => {
     const price = prices[card.rarity];
@@ -572,10 +573,13 @@ function deckDisplay() {
 
   const deck = JSON.parse(localStorage.getItem("deck")) || [];
 
-  if (deck.length === 0) {
-    deckContainer.innerHTML = "<p class='text-[#bea301]'>No items in your deck yet.</p>";
-    return;
-  }
+  // if (deck.length === 0) {
+  //   if(deckContainer){
+  //     deckContainer.innerHTML = "<p class='text-[#bea301]'>No items in your deck yet.</p>";
+  //   return;
+  //   }
+    
+  // }
 
   deck.forEach(card => {
     const cardDiv = document.createElement("div");
@@ -732,79 +736,79 @@ if (q5) {
   });
 }
 
-function playDisplay(deck) {
-  const ownedCardsContainer = document.getElementById("playDeckDisplay");
-  ownedCardsContainer.innerHTML = "";
+// function playDisplay(deck) {
+//   const ownedCardsContainer = document.getElementById("playDeckDisplay");
+//   ownedCardsContainer.innerHTML = "";
 
-  if (deck.length === 0) {
-    ownedCardsContainer.innerHTML = "<p class='text-[#bea301]'>No items in your deck.</p>";
-    return;
-  }
+//   if (deck.length === 0) {
+//     ownedCardsContainer.innerHTML = "<p class='text-[#bea301]'>No items in your deck.</p>";
+//     return;
+//   }
 
-  deck.forEach(card => {
-    const cardDiv = document.createElement("div");
+//   deck.forEach(card => {
+//     const cardDiv = document.createElement("div");
 
 
-    cardDiv.innerHTML = `
-    <div class="w-35.5 h-47.5 bg-black flex justify-center items-center scale-70 xl:scale-120 2xl:scale-180 -mt-6 -mb-6 xl:mt-6 xl:mb-6 2xl:mt-20 2xl:mb-20">
-      <div class="w-33 h-45.25 border border-[#bea301] flex flex-col items-center justify-evenly overflow-hidden">
-        <div class="w-31  border border-[#bea301] relative">
-          <img  class="animate-pulse" src="${card['bg-img']}" alt="${card['rarity']} background">
-          <img class="absolute bottom-0 right-0" src="${card['caracter']}" alt="${card['name']}">
-          <div
-            class="w-3.5 h-3.5 bg-black border border-[#bea301] absolute z-20 flex justify-center items-center top-0 rotate-45">
-            <p class="${card['txt-color']} text-xs -rotate-45">${card['power']}</p>
-          </div>
-        </div>
-        <div class="flex relative -mt-0.5">
-          <div class="w-1 h-1 border border-[#bea301] bg-black absolute rotate-45 -left-1.5 top-1 z-10"></div>
-          <div class="w-2 h-2 border border-[#bea301] bg-black absolute rotate-45 -left-1 top-0.5"></div>
-          <div class="w-21.5 h-3 border border-[#bea301] flex justify-center items-center rounded-full">
-            <p class="${card['txt-color']} text-[6px]">${card['name']}</p>
-          </div>
-          <div class="w-2 h-2 border border-[#bea301] bg-black absolute rotate-45 -right-1 top-0.5"></div>
-          <div class="w-1 h-1 border border-[#bea301] bg-black absolute rotate-45 -right-1.5 top-1"></div>
-        </div>
-        <div>
+//     cardDiv.innerHTML = `
+//     <div class="w-35.5 h-47.5 bg-black flex justify-center items-center scale-70 xl:scale-120 2xl:scale-180 -mt-6 -mb-6 xl:mt-6 xl:mb-6 2xl:mt-20 2xl:mb-20">
+//       <div class="w-33 h-45.25 border border-[#bea301] flex flex-col items-center justify-evenly overflow-hidden">
+//         <div class="w-31  border border-[#bea301] relative">
+//           <img  class="animate-pulse" src="${card['bg-img']}" alt="${card['rarity']} background">
+//           <img class="absolute bottom-0 right-0" src="${card['caracter']}" alt="${card['name']}">
+//           <div
+//             class="w-3.5 h-3.5 bg-black border border-[#bea301] absolute z-20 flex justify-center items-center top-0 rotate-45">
+//             <p class="${card['txt-color']} text-xs -rotate-45">${card['power']}</p>
+//           </div>
+//         </div>
+//         <div class="flex relative -mt-0.5">
+//           <div class="w-1 h-1 border border-[#bea301] bg-black absolute rotate-45 -left-1.5 top-1 z-10"></div>
+//           <div class="w-2 h-2 border border-[#bea301] bg-black absolute rotate-45 -left-1 top-0.5"></div>
+//           <div class="w-21.5 h-3 border border-[#bea301] flex justify-center items-center rounded-full">
+//             <p class="${card['txt-color']} text-[6px]">${card['name']}</p>
+//           </div>
+//           <div class="w-2 h-2 border border-[#bea301] bg-black absolute rotate-45 -right-1 top-0.5"></div>
+//           <div class="w-1 h-1 border border-[#bea301] bg-black absolute rotate-45 -right-1.5 top-1"></div>
+//         </div>
+//         <div>
 
-        </div>
-        <div class="flex relative items-center -mt-2">
-          <div class="flex items-center relative -top-0.25">
-            <div class="w-0.75 h-0.75 bg-[#BEA301] rotate-45"></div>
-            <hr class="w-5 border-0.5 border-[#BEA301]">
-          </div>
-          <p class="text-[7px] ${card['txt-color']}">${card['rarity']}</p>
-          <div class="flex items-center relative -top-0.25">
-            <hr class="w-5 border-0.5 border-[#BEA301]">
-            <div class="w-0.75 h-0.75  bg-[#BEA301] rotate-45"></div>
-          </div>
-        </div>
-        <p class="text-[5px] ${card['txt-color']} -mt-1.75">${card['role']}</p>
-        <div class="border border-[#BEA301] py-0.25 px-1 flex items-center justify-center rounded-full -mt-1">
-          <p class="text-[5px] ${card['txt-color']}">${card['element']}</p>
-        </div>
-        <div class="flex relative w-full justify-center items-end">
-          <div class="flex flex-col items-center absolute -bottom-1 left-0.5">
-            <p class="text-[5px] text-[#BEA301]">${card['atk']} Pt</p>
-            <div class="border border-[#BEA301] flex items-center justify-center rounded-full w-5.5 h-5.5">
-              <img src="imgs/atk icon.png" alt=" swords">
-            </div>
-          </div>
-          <p class="text-[4.5px] text-[#bea301]">"<span class="${card['txt-color']}"> ${card['description']} </span>"</p>
-          <div class="flex flex-col items-center absolute -bottom-1 right-0.5">
-            <p class="text-[5px] text-[#BEA301]">${card['def']} Pt</p>
-            <div class="border border-[#BEA301] flex items-center justify-center rounded-full w-5.5 h-5.5">
-              <img src="imgs/def icon.png" alt=" shield">
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    </div>
-    `;
-    ownedCardsContainer.appendChild(cardDiv);
-  });
-}
+//         </div>
+//         <div class="flex relative items-center -mt-2">
+//           <div class="flex items-center relative -top-0.25">
+//             <div class="w-0.75 h-0.75 bg-[#BEA301] rotate-45"></div>
+//             <hr class="w-5 border-0.5 border-[#BEA301]">
+//           </div>
+//           <p class="text-[7px] ${card['txt-color']}">${card['rarity']}</p>
+//           <div class="flex items-center relative -top-0.25">
+//             <hr class="w-5 border-0.5 border-[#BEA301]">
+//             <div class="w-0.75 h-0.75  bg-[#BEA301] rotate-45"></div>
+//           </div>
+//         </div>
+//         <p class="text-[5px] ${card['txt-color']} -mt-1.75">${card['role']}</p>
+//         <div class="border border-[#BEA301] py-0.25 px-1 flex items-center justify-center rounded-full -mt-1">
+//           <p class="text-[5px] ${card['txt-color']}">${card['element']}</p>
+//         </div>
+//         <div class="flex relative w-full justify-center items-end">
+//           <div class="flex flex-col items-center absolute -bottom-1 left-0.5">
+//             <p class="text-[5px] text-[#BEA301]">${card['atk']} Pt</p>
+//             <div class="border border-[#BEA301] flex items-center justify-center rounded-full w-5.5 h-5.5">
+//               <img src="imgs/atk icon.png" alt=" swords">
+//             </div>
+//           </div>
+//           <p class="text-[4.5px] text-[#bea301]">"<span class="${card['txt-color']}"> ${card['description']} </span>"</p>
+//           <div class="flex flex-col items-center absolute -bottom-1 right-0.5">
+//             <p class="text-[5px] text-[#BEA301]">${card['def']} Pt</p>
+//             <div class="border border-[#BEA301] flex items-center justify-center rounded-full w-5.5 h-5.5">
+//               <img src="imgs/def icon.png" alt=" shield">
+//             </div>
+//           </div>
+//         </div>
+//       </div>
+//     </div>
+//     </div>
+//     `;
+//     ownedCardsContainer.appendChild(cardDiv);
+//   });
+// }
 
 function updateDeckCounter(storeddeck) {
   const counterElement = document.querySelector(".deckCounter");
@@ -829,7 +833,7 @@ function drawCard() {
       const card = playDeck[randCard];
       if (Hand[i] === 0) {
         const hand = document.querySelector(`#hand-${i + 1}`);
-        hand.innerHTML = ` <div id="card-${i + 1}-${count} " class="w-35.5 h-47.5 bg-black flex justify-center items-center scale-38 xl:scale-80 2xl:scale-115 cursor-pointer" draggable="true"
+        hand.innerHTML = ` <div id="card-${i + 1}-${count} " class="w-35.5 h-47.5 bg-black flex justify-center items-center scale-38 xl:scale-80 2xl:scale-115 cursor-grab" draggable="true"
             ondragstart="dragstartHandler(event)">
       <div class="w-33 h-45.25 border border-[#bea301] flex flex-col items-center justify-evenly overflow-hidden">
         <div class="w-31  border border-[#bea301] relative">
@@ -916,6 +920,7 @@ function drawCard() {
 }
 function dragstartHandler(ev) {
   ev.dataTransfer.setData("card", ev.target.id);
+  ev.target.classlist.add("cursor-grab");
 }
 
 function dragoverHandler(ev) {
@@ -970,37 +975,38 @@ function dropHandler(ev) {
 }
 const endTurnBtn = document.getElementById("endTurn");
 let turn = 0;
-endTurnBtn.addEventListener("click", () => {
-  const hands = document.querySelectorAll(".hand");
-  const slots = document.querySelectorAll(".slot");
-  let isHandempty = 0;
-  let isSlotempty = 0;
-  let i = 0;
 
-  for (i = 0; i < hands.length; i++) {
-    if (hands[i].childElementCount != 0) {
-      isHandempty = 1;
-      break;
-    }
-  }
-  for (i = 0; i < slots.length; i++) {
-    if (slots[i].childElementCount != 0 && (slots[i].classList.contains("atk") || slots[i].classList.contains("def"))) {
-      isSlotempty = 1;
-      break;
-    }
-  }
-  if (isHandempty == 0 || isSlotempty == 0) {
-    alert("You Need To Play And Draw A Card!!");
+// endTurnBtn.addEventListener("click", () => {
+//   const hands = document.querySelectorAll(".hand");
+//   const slots = document.querySelectorAll(".slot");
+//   let isHandempty = 0;
+//   let isSlotempty = 0;
+//   let i = 0;
 
-  } else {
-    endTurnBtn.classList.remove("bg-blue-600", "cursor-pointer");
-    endTurnBtn.classList.add("bg-gray-600", "cursor-not-allowed");
-    endTurnBtn.setAttribute("disabled", "true");
-    document.getElementById("turn").textContent = "Opposant Turn";
-    turn = 1;
-    opposant();
-  }
-})
+//   for (i = 0; i < hands.length; i++) {
+//     if (hands[i].childElementCount != 0) {
+//       isHandempty = 1;
+//       break;
+//     }
+//   }
+//   for (i = 0; i < slots.length; i++) {
+//     if (slots[i].childElementCount != 0 && (slots[i].classList.contains("atk") || slots[i].classList.contains("def"))) {
+//       isSlotempty = 1;
+//       break;
+//     }
+//   }
+//   if (isHandempty == 0 || isSlotempty == 0) {
+//     alert("You Need To Play And Draw A Card!!");
+
+//   } else {
+//     endTurnBtn.classList.remove("bg-blue-600", "cursor-pointer");
+//     endTurnBtn.classList.add("bg-gray-600", "cursor-not-allowed");
+//     endTurnBtn.setAttribute("disabled", "true");
+//     document.getElementById("turn").textContent = "Opposant Turn";
+//     turn = 1;
+//     opposant();
+//   }
+// })
 let StartOppGameDraw = 0;
 function opposant() {
   console.log(opposantHandCount);
@@ -1130,3 +1136,34 @@ function opposant() {
   }
 
 }
+// function restack(){
+//  const cardDisplay = document.getElementById("cardsDisplay");
+ 
+//   const firstDiv = cardDisplay.querySelector("div div p:nth-child(2)");
+//   const text = firstDiv.innerHTML;
+//   const match = text.match(/Quantity : ([0-9]+)/);
+//   const theTarget = match[1];
+//   if(theTarget<10){
+//    console.log(oneCard);
+//   }
+// }
+// restack();
+
+
+function shipest(){
+  const storedCards = [...allCards];
+  console.log();
+  console.log(storedCards);
+  let cardId = 0;
+  let min = 10;
+  storedCards.forEach(card=>{
+   let price = prices[card.rarity];
+   if(price<min){
+    min = price;
+    cardId = card.id;
+   }
+  })
+  const index = storedCards.findIndex(card => card.id == cardId);
+  console.log(storedCards[index]);
+}
+shipest();
